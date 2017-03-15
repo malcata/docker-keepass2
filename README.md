@@ -1,6 +1,6 @@
 # docker-keepass2
 
-A docker image to run keepass2.
+A docker file to run keepass2.
 
 ## Why
 
@@ -10,7 +10,7 @@ Good password managers are hard to find ([one of many password managers top](htt
 ## How to install
 
 1. Install docker ;-)
-2. Install a X server like [XQuartz](https://www.xquartz.org/)
+2. If not already available, install a X server like [XQuartz](https://www.xquartz.org/) and allow connections from network clients.
 3. Clone repository: 
 ```shell
 https://github.com/malcata/docker-keepass2.git
@@ -27,12 +27,12 @@ $ xhost + $IP
 
 ## Usage
 
-1. Build the image:
+1. Build the container image:
 ```shell
 $ make build
 ```
 
-2. Run the image:
+2. Run the container:
 ```shell
 $ make run
 ```
