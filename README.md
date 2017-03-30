@@ -51,6 +51,6 @@ The code in this repository, unless otherwise noted, is MIT licensed. See the `L
 
 Content inspiration: [Fábio Rehm](http://fabiorehm.com/blog/2014/09/11/running-gui-apps-with-docker/).
 
-Form inspiration: @rcarmo.
+Form inspiration: [rcarmo](https://github.com/rcarmo).
 
 Read this for a [better way](http://wiki.ros.org/docker/Tutorials/GUI).
