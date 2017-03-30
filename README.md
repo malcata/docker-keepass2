@@ -37,7 +37,7 @@ $ make build
 $ make run
 ```
 
-Check the [Makefile](https://raw.githubusercontent.com/malcata/docker-keepass2/master/Makefile) for further details.
+Check the [Makefile](Makefile) for further details.
 
 ## Contributing
 
