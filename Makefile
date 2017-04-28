@@ -1,13 +1,16 @@
 export IMAGE_NAME=malcata/keepass2
 export KEEPASS_FOLDER?="/tmp"
 export IP?="192.168.100.100"
+
 # One should have environment variables setting $IP and $KEEPASS_FOLDER
 
 build:
 	docker build -t ${IMAGE_NAME} -f Dockerfile .
 
 run:
-	docker run -d --name keepass2 \
+	xhost +${IP}
+	docker run -d --rm --name keepass2 \
+	--net=host \
 	--env DISPLAY=${IP}:0 \
 	--volume /tmp/.X11-unix:/tmp/.X11-unix \
 	--volume ${KEEPASS_FOLDER}:/keepass_folder ${IMAGE_NAME}
