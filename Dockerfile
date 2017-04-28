@@ -1,4 +1,4 @@
-FROM ubuntu:latest
+FROM ubuntu:14.04
 
 MAINTAINER Malcata https://github.com/malcata
 
@@ -24,10 +24,6 @@ RUN set -xe \
     \
     && echo 'Acquire::GzipIndexes "true"; Acquire::CompressionTypes::Order:: "gz";' > /etc/apt/apt.conf.d/docker-gzip-indexes
 
-# delete all the apt list files since they're big and get stale quickly
-RUN rm -rf /var/lib/apt/lists/*
-# this forces "apt-get update" in dependent images, which is also good
-
 # enable the universe
 RUN sed -i 's/^#\s*\(deb.*universe\)$/\1/g' /etc/apt/sources.list
 
@@ -36,6 +32,10 @@ RUN apt-get update
 
 # install keepass2
 RUN apt-get install -y keepass2
+
+# delete all the apt list files since they're big and get stale quickly
+RUN rm -rf /var/lib/apt/lists/*
+# this forces "apt-get update" in dependent images, which is also good
 
 # overwrite this with 'CMD []' in a dependent Dockerfile
 #CMD ["/bin/bash"]

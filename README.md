@@ -21,8 +21,6 @@ https://github.com/malcata/docker-keepass2.git
 $ export IP=$(ifconfig en1 | grep inet | awk '$1=="inet" {print $2}')
 # Folder for the database file
 $ export KEEPASS_FOLDER="<some folder>"
-# Authorize the X Client IP
-$ xhost + $IP 
 ```
 
 ## Usage
