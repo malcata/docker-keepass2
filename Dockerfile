@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM debian:buster-slim
 
 MAINTAINER Malcata https://github.com/malcata
 
