@@ -1,5 +1,5 @@
 # smaller footprint docker image
-FROM debian:buster-slim
+FROM debian:bullseye-slim
 
 MAINTAINER Malcata https://github.com/malcata
 
