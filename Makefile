@@ -3,12 +3,13 @@ export KEEPASS_FOLDER?="/tmp"
 export IP?="192.168.100.100"
 export IMAGE_TAG?=latest
 export DOCKER_LOGIN?=malcata
+export KEEPASS_VAULT?=myvault.kdbx
 
 # One should have environment variables setting $IP and $KEEPASS_FOLDER
 
 
 build:
-	docker buildx build --platform=linux/amd64 --load -t ${IMAGE_NAME}:${IMAGE_TAG} -f Dockerfile .
+	docker buildx build --platform=linux/arm64/v8 --load -t ${IMAGE_NAME}:${IMAGE_TAG} -f Dockerfile .
 	docker buildx stop
 
 build-amd:
@@ -25,7 +26,7 @@ build-pub:
 	# docker login -u ${DOCKER_LOGIN} --password-stdin
 	docker buildx create --use 
 	docker buildx inspect --bootstrap
-	docker buildx build --platform=linux/amd64,linux/arm64 --push -t ${IMAGE_NAME}:${IMAGE_TAG} -f Dockerfile .
+	docker buildx build --platform=linux/amd64,linux/arm64,linux/arm64/v8 --push -t ${IMAGE_NAME}:${IMAGE_TAG} -f Dockerfile .
 	docker buildx stop
 
 run:
@@ -34,7 +35,7 @@ run:
 	--net=host \
 	--env DISPLAY=${IP}:0 \
 	--volume /tmp/.X11-unix:/tmp/.X11-unix \
-	--volume ${KEEPASS_FOLDER}:/keepass_folder ${IMAGE_NAME}
+	--volume ${KEEPASS_FOLDER}:/keepass_folder ${IMAGE_NAME} ${KEEPASS_VAULT}
 
 rmi:
 	docker rmi -f $(IMAGE_NAME)

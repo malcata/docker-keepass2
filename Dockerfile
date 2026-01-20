@@ -1,7 +1,7 @@
 # smaller footprint docker image
 FROM debian:bullseye-slim
 
-MAINTAINER Malcata https://github.com/malcata
+LABEL Authors="malcata https://github.com/malcata"
 
 # a few minor docker-specific tweaks
 # see https://github.com/docker/docker/blob/master/contrib/mkimage/debootstrap
@@ -43,4 +43,3 @@ RUN rm -rf /var/lib/apt/lists/*
 
 # launch Keepass2
 ENTRYPOINT [ "/usr/bin/keepass2" ]
-
