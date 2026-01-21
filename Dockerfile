@@ -1,4 +1,4 @@
-FROM debian:trixie-slim
+FROM debian:stable-slim
 
 LABEL org.opencontainers.image.authors="malcata https://github.com/malcata"
 
