@@ -29,7 +29,6 @@ make run
 ```
 
 Required environment variables before running:
-- `IP` - Host IP address (e.g., `export IP=$(ifconfig en1 | grep inet | awk '$1=="inet" {print $2}')`)
 - `KEEPASS_FOLDER` - Path to folder containing the KeePass database file
 
 Optional environment variables:
@@ -38,6 +37,6 @@ Optional environment variables:
 
 ## Architecture
 
-- **Dockerfile**: Debian bullseye-slim based image that installs KeePass2 and sets it as the entrypoint
+- **Dockerfile**: Debian stable-slim based image that installs KeePass2 and sets it as the entrypoint
 - **Makefile**: Build targets for different architectures and run configuration
-- X11 forwarding: Container connects to host X server via `DISPLAY` environment variable and `/tmp/.X11-unix` volume mount
+- X11 forwarding: Container connects to the host X server (XQuartz) via `host.docker.internal:0`. Docker Desktop on macOS runs containers in a Linux VM so `--net=host` does not work; `host.docker.internal` is used instead.
