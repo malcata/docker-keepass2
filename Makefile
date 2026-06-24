@@ -30,11 +30,12 @@ build-pub:
 	docker buildx stop
 
 run:
-	xhost +${IP}
-	docker run -d --rm --name keepass2 \
-	--net=host \
-	--env DISPLAY=${IP}:0 \
-	--volume /tmp/.X11-unix:/tmp/.X11-unix \
+	xhost +localhost
+	docker run --rm --name keepass2 \
+	--env DISPLAY=host.docker.internal:0 \
+	--env _X11_NO_MITSHM=1 \
+	--env QT_X11_NO_MITSHM=1 \
+	--add-host=host.docker.internal:host-gateway \
 	--volume ${KEEPASS_FOLDER}:/keepass_folder ${IMAGE_NAME} ${KEEPASS_VAULT}
 
 rmi:
