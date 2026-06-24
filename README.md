@@ -17,8 +17,6 @@ https://github.com/malcata/docker-keepass2.git
 ```
 4. Configure required environment variables, eventually on a bash_profile file:
 ```shell
-# IP example for Mac based on interface en1
-$ export IP=$(ifconfig en1 | grep inet | awk '$1=="inet" {print $2}')
 # Folder for the database file
 $ export KEEPASS_FOLDER="<some folder>"
 ```
