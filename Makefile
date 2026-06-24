@@ -1,11 +1,10 @@
 export IMAGE_NAME=malcata/keepass2
 export KEEPASS_FOLDER?="/tmp"
-export IP?="192.168.100.100"
 export IMAGE_TAG?=latest
 export DOCKER_LOGIN?=malcata
 export KEEPASS_VAULT?=myvault.kdbx
 
-# One should have environment variables setting $IP and $KEEPASS_FOLDER
+# One should have the environment variable $KEEPASS_FOLDER set before running
 
 
 build:
